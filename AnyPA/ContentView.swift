@@ -8,29 +8,35 @@
 
 
 import SwiftUI
+import MapKit
+import CoreLocation
 
 struct ContentView: View {
+    @State var locatedInTrain = true
     var trainStations: [TrainStation] = []
-    
+    // let location: CLLocation
     var body: some View {
         
         NavigationView {
             
            List(trainStations) { trainStation in
             
-            
+            // location = CLLocation(latitude: TrainStation.stationlatitude, longitude: TrainStation.stationlongitude)
             NavigationLink(destination: StationDetail(trainStation: trainStation)) {
             Image(trainStation.thumbnailNameStation)
                 .resizable()
-                .cornerRadius(3.0)
+                .cornerRadius(5.0)
                 .frame(width: 150, height: 125)
             
             VStack(alignment: .leading) {
                 Text(trainStation.name)
+                Text("Geo: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude)")
+                    .font(.subheadline)
                 Text("Blair Bound: Next train @ " + "\(trainStation.nextTrainTimeBlairBound)")
                 .font(.subheadline)
                 Text("Tunneys Bound: Next train @ " + "\(trainStation.tunneysBoundNextTrainTime)")
                 .font(.subheadline)
+
                 // Text(trainStation.address)
                 // .font(.subheadline)
                 // Text("Train ID: " + "\(trainStation.trainId)")
@@ -40,6 +46,31 @@ struct ContentView: View {
            }
         }
         .navigationBarTitle(Text("Train Stations"))
+        .navigationBarItems(leading:
+            HStack {
+                
+                NavigationLink(destination: Following()) {
+                Text("Stations")
+    
+                }
+                
+                NavigationLink(destination: Following()) {
+                Text("In-Train")
+                
+                }
+                
+                NavigationLink(destination: Following()) {
+                Text("Follow")
+                
+                }
+                
+                Button("About") {
+                    print("About Tapped")
+                }
+            })
+           .alert(isPresented: $locatedInTrain) {
+            Alert(title: Text("In-Train"), message: Text("In-Train announcements are available"), dismissButton: .default(Text("Ok")))
+            }
         }
     }
 }
