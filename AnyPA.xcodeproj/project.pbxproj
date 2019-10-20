@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90B53AE235CB27D00131CF3 /* LocatorVenueVehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90B53AD235CB27D00131CF3 /* LocatorVenueVehicle.swift */; };
 		E914020423516E41005639E5 /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = E914020323516E41005639E5 /* Following.swift */; };
 		E96B0D37235103C200BC53B5 /* StationDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B0D36235103C200BC53B5 /* StationDetail.swift */; };
 		E999D51E234A798700228B1C /* TrainStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D51D234A798700228B1C /* TrainStation.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90B53AD235CB27D00131CF3 /* LocatorVenueVehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatorVenueVehicle.swift; sourceTree = "<group>"; };
 		E914020323516E41005639E5 /* Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
 		E96B0D36235103C200BC53B5 /* StationDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetail.swift; sourceTree = "<group>"; };
 		E999D51D234A798700228B1C /* TrainStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStation.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				E96B0D36235103C200BC53B5 /* StationDetail.swift */,
 				E9B326482353CA29009467A1 /* TrainDetail.swift */,
 				E914020323516E41005639E5 /* Following.swift */,
+				E90B53AD235CB27D00131CF3 /* LocatorVenueVehicle.swift */,
 				E9E9B5BC23493C0000731F1A /* Assets.xcassets */,
 				E9E9B5C123493C0000731F1A /* LaunchScreen.storyboard */,
 				E9E9B5C423493C0000731F1A /* Info.plist */,
@@ -294,6 +297,7 @@
 				E9E9B5B723493BF200731F1A /* AppDelegate.swift in Sources */,
 				E914020423516E41005639E5 /* Following.swift in Sources */,
 				E999D51E234A798700228B1C /* TrainStation.swift in Sources */,
+				E90B53AE235CB27D00131CF3 /* LocatorVenueVehicle.swift in Sources */,
 				E9B326492353CA29009467A1 /* TrainDetail.swift in Sources */,
 				E96B0D37235103C200BC53B5 /* StationDetail.swift in Sources */,
 				E9E9B5B923493BF200731F1A /* SceneDelegate.swift in Sources */,

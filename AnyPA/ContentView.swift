@@ -14,14 +14,15 @@ import CoreLocation
 struct ContentView: View {
     @State var locatedInTrain = true
     var trainStations: [TrainStation] = []
+    @ObservedObject var astationProximityDetector = StationProximityDetector()
+    
     // let location: CLLocation
     var body: some View {
         
         NavigationView {
             
-           List(trainStations) { trainStation in
-            
-            // location = CLLocation(latitude: TrainStation.stationlatitude, longitude: TrainStation.stationlongitude)
+            List(trainStations) { trainStation in
+            // location = CLLocation(latitude: trainStation.stationlatitude, longitude: trainStation.stationlongitude)
             NavigationLink(destination: StationDetail(trainStation: trainStation)) {
             Image(trainStation.thumbnailNameStation)
                 .resizable()
@@ -30,17 +31,14 @@ struct ContentView: View {
             
             VStack(alignment: .leading) {
                 Text(trainStation.name)
-                Text("Geo: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude)")
+                Text("Geo: " + "\(trainStation.stationlatitude)" + ", \(trainStation.stationlongitude) " + "\(self.astationProximityDetector.shortestDistance)")
                     .font(.subheadline)
                 Text("Blair Bound: Next train @ " + "\(trainStation.nextTrainTimeBlairBound)")
                 .font(.subheadline)
                 Text("Tunneys Bound: Next train @ " + "\(trainStation.tunneysBoundNextTrainTime)")
                 .font(.subheadline)
-
-                // Text(trainStation.address)
-                // .font(.subheadline)
-                // Text("Train ID: " + "\(trainStation.trainId)")
-                // .font(.subheadline)
+                // Text("Prox: " + "\(self.astationProximityDetector.shortestDistance)")
+                
                 
             }
            }
