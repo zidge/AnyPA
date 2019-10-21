@@ -15,7 +15,9 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
     
     @Published var shortestDistance: Int = 1
     var locationManager: CLLocationManager?
-    // var locationManager = CLLocationManager()
+    @Published var distanceFromStation: Int = 4
+
+    
     
     override init() {
     
@@ -25,24 +27,35 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.startUpdatingLocation()
+        print("THis is it")
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             self.shortestDistance += 1
-        }
+         }
         
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         let myLastKnownLocation = location.coordinate
+        let myLastKnownCourse = location.course
         
-        print("My Last Long/Lat is: \(myLastKnownLocation)")
+        let latitude: CLLocationDegrees = 37.2
+        let longitude: CLLocationDegrees = 22.9
+        let stationPimisiLocation: CLLocation = CLLocation(latitude: latitude,
+          longitude: longitude)
+        distanceFromStation = Int((location.distance(from: stationPimisiLocation) / 1000))
+        print("My Last Long/Lat is: \(myLastKnownLocation) and \(myLastKnownCourse)")
     }
 }
 struct LocatorVenueVehicle: View {
     @ObservedObject var stationProximityDetector = StationProximityDetector()
     
     var body: some View {
+        VStack {
         Text("\(stationProximityDetector.shortestDistance)")
+        Text("\(stationProximityDetector.distanceFromStation)")
+        }
+        
     }
 }
 
