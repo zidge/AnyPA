@@ -21,8 +21,9 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
     
     override init() {
     
-        // locationManager? = CLLocationManager()
+        
         super.init()
+        locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
@@ -32,6 +33,15 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
             self.shortestDistance += 1
          }
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            // Great
+            self.distanceFromStation = 111
+        } else {
+            self.distanceFromStation = 222
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
