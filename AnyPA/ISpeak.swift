@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct ISpeak: View {
-    var announceType = ["Ad-hoc", "Boarding", "Gate Change", "Lost & Found", "Delay"]
+    var announceType = ["Ad-hoc", "Boarding", "Departure", "Gate Change", "Lost & Found", "Delay"]
     @State var adHocMsg: String = "This is an Ad-hoc message"
     @State private var selectedAnnounceType = 0
+    @State var sayAnnouncement = false
     
     var body: some View {
         NavigationView {
@@ -23,28 +24,59 @@ struct ISpeak: View {
                         }
                     }
                 }
+                
                 Section {
                     Text("Your \(self.announceType[selectedAnnounceType]) message:")
                     if self.announceType[selectedAnnounceType] == "Ad-hoc" {
                         Text("Say What?")
-                        Text("When?")
-                        // TextField($adHocMsg, placeholder:
-                        // Text("Msg"))
+                        Button(action: {
+                            self.sayAnnouncement.toggle()
+                        })
+                           {
+                               Text("Play Announcement")
+                           }
+                
                     }
+                    else if self.announceType[selectedAnnounceType] == "Departure" {
+                            Text("Train line?")
+                            Text("Departure Time?")
+                             Button(action: {
+                                 self.sayAnnouncement.toggle()
+                             })
+                                {
+                                    Text("Play Announcement")
+                                }
+                        }
                     else if self.announceType[selectedAnnounceType] == "Delay" {
                         Text("Train line?")
-                        Text("Delay Time")
+                        Text("Expected Delay")
+                         Button(action: {
+                             self.sayAnnouncement.toggle()
+                         })
+                            {
+                                Text("Play Announcement")
+                            }
                     }
+                    else if self.announceType[selectedAnnounceType] == "Lost & Found" {
+                            Text("Lost Item")
+                            Text("Description")
+                             Button(action: {
+                                 self.sayAnnouncement.toggle()
+                             })
+                                {
+                                    Text("Play Announcement")
+                                }
+                        }
                     else {
-                        Text("Not Delay")
+                        Text("No message for selected category")
                     }
-                }
+                    
             }
         }.navigationBarTitle("iSpeak Annoucement Form")
         
     }
 }
-
+}
 struct ISpeak_Previews: PreviewProvider {
     static var previews: some View {
         ISpeak()
