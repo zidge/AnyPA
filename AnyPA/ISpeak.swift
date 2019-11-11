@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct ISpeak: View {
-    var announceType = ["Ad-hoc", "Boarding", "Gate Change", "Lost & Found", "Delayed Flight"]
-    
+    var announceType = ["Ad-hoc", "Boarding", "Gate Change", "Lost & Found", "Delay"]
+    @State var adHocMsg: String = "This is an Ad-hoc message"
     @State private var selectedAnnounceType = 0
     
     var body: some View {
@@ -21,6 +21,22 @@ struct ISpeak: View {
                         ForEach(0..<announceType.count) {
                             Text(self.announceType[$0])
                         }
+                    }
+                }
+                Section {
+                    Text("Your \(self.announceType[selectedAnnounceType]) message:")
+                    if self.announceType[selectedAnnounceType] == "Ad-hoc" {
+                        Text("Say What?")
+                        Text("When?")
+                        // TextField($adHocMsg, placeholder:
+                        // Text("Msg"))
+                    }
+                    else if self.announceType[selectedAnnounceType] == "Delay" {
+                        Text("Train line?")
+                        Text("Delay Time")
+                    }
+                    else {
+                        Text("Not Delay")
                     }
                 }
             }
