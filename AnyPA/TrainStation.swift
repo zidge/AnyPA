@@ -24,7 +24,7 @@ struct TrainStation : Identifiable {
     var thumbnailNameStation: String { return name + "_Station_" + "Thumb" }
     var thumbnailName: String { return "TrainStationBlueGreen" }}
 
-#if DEBUG
+// #if DEBUG
 let testData = [
     TrainStation(trainId: 1, name: "Tunneys", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: true),
     TrainStation(trainId: 2, name: "Bayview", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: true),
@@ -40,4 +40,4 @@ let testData = [
     TrainStation(trainId: 12, name: "Cyrville", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: false),
     TrainStation(trainId: 13, name: "Blair", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: false),
 ]
-#endif
+// #endif

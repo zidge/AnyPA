@@ -28,10 +28,10 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.startUpdatingLocation()
-        print("THis is it")
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            self.shortestDistance += 1
-         }
+        print("THis is that")
+        // Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+        //    self.shortestDistance += 1
+        // }
         
     }
     
@@ -40,8 +40,8 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
             // Great
             self.distanceFromStation = 111
         } else {
-            self.distanceFromStation = 222
-        }
+           self.distanceFromStation = 333
+         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -54,7 +54,7 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
         let stationPimisiLocation: CLLocation = CLLocation(latitude: latitude,
           longitude: longitude)
         distanceFromStation = Int((location.distance(from: stationPimisiLocation) / 1000))
-        print("My Last Long/Lat is: \(myLastKnownLocation) and \(myLastKnownCourse)")
+        print("My Last Long/Lat is: \(myLastKnownLocation) and \(myLastKnownCourse) and distance is: \(distanceFromStation)")
     }
 }
 struct LocatorVenueVehicle: View {

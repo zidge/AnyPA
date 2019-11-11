@@ -22,7 +22,6 @@ struct ContentView: View {
         NavigationView {
             
             List(trainStations) { trainStation in
-            // location = CLLocation(latitude: trainStation.stationlatitude, longitude: trainStation.stationlongitude)
             NavigationLink(destination: StationDetail(trainStation: trainStation)) {
             Image(trainStation.thumbnailNameStation)
                 .resizable()
@@ -37,7 +36,7 @@ struct ContentView: View {
                 .font(.subheadline)
                 Text("Tunneys Bound: Next train @ " + "\(trainStation.tunneysBoundNextTrainTime)")
                 .font(.subheadline)
-                // Text("Prox: " + "\(self.astationProximityDetector.shortestDistance)")
+                //Text("Prox: " + "\(self.astationProximityDetector.shortestDistance)")
                 
                 
             }
@@ -65,6 +64,12 @@ struct ContentView: View {
                 Button("About") {
                     print("About Tapped")
                 }
+                
+                NavigationLink(destination: ISpeak()) {
+                    Text("iSpeak")
+                }
+                
+
             })
            .alert(isPresented: $locatedInTrain) {
             Alert(title: Text("In-Train"), message: Text("In-Train announcements are available"), dismissButton: .default(Text("Ok")))
