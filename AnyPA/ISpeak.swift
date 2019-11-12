@@ -13,6 +13,8 @@ struct ISpeak: View {
     @State var adHocMsg: String = "This is an Ad-hoc message"
     @State private var selectedAnnounceType = 0
     @State var sayAnnouncement = false
+    @State var delay = 5
+    @State var trainLine: String = ""
     
     var body: some View {
         NavigationView {
@@ -37,8 +39,23 @@ struct ISpeak: View {
                            }
                 
                     }
+                    else if self.announceType[selectedAnnounceType] == "Boarding" {
+                            Text("What Train?")
+                            TextField("Train Line", text: $trainLine)
+                            // TextField($trainLine)
+                            // {
+                            // Text("Train Line")
+                            // }
+                            Text("Passenger Category")
+                             Button(action: {
+                                 self.sayAnnouncement.toggle()
+                             })
+                                {
+                                    Text("Play Announcement")
+                                }
+                        }
                     else if self.announceType[selectedAnnounceType] == "Departure" {
-                            Text("Train line?")
+                            Text("What Train?")
                             Text("Departure Time?")
                              Button(action: {
                                  self.sayAnnouncement.toggle()
@@ -47,9 +64,23 @@ struct ISpeak: View {
                                     Text("Play Announcement")
                                 }
                         }
+                    else if self.announceType[selectedAnnounceType] == "Gate Change" {
+                        Text("What Train?")
+                        
+                        Text("Previous Gate?")
+                        Text("New Gate?")
+                         Button(action: {
+                             self.sayAnnouncement.toggle()
+                         })
+                            {
+                                Text("Play Announcement")
+                            }
+                    }
                     else if self.announceType[selectedAnnounceType] == "Delay" {
                         Text("Train line?")
-                        Text("Expected Delay")
+                        Stepper(value: $delay, in: 5...50) {
+                         Text("Estimated Delay: \(self.delay) min")
+                        }
                          Button(action: {
                              self.sayAnnouncement.toggle()
                          })
@@ -72,7 +103,7 @@ struct ISpeak: View {
                     }
                     
             }
-        }.navigationBarTitle("iSpeak Annoucement Form")
+        }.navigationBarTitle("Annoucement Builder")
         
     }
 }
