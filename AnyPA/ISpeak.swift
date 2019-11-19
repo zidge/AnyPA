@@ -10,8 +10,10 @@ import SwiftUI
 
 struct ISpeak: View {
     var announceType = ["Ad-hoc", "Boarding", "Departure", "Gate Change", "Lost & Found", "Delay"]
+    var passengerType = ["With Children", "Premiere", "A-F", "G-L", "M-R", "All Passengers"]
     @State var adHocMsg: String = "This is an Ad-hoc message"
     @State private var selectedAnnounceType = 0
+    @State private var selectedPassengerType = 0
     @State var sayAnnouncement = false
     @State var delay = 5
     @State var trainLine: String = ""
@@ -46,7 +48,12 @@ struct ISpeak: View {
                             // {
                             // Text("Train Line")
                             // }
-                            Text("Passenger Category")
+                            Picker(selection: $selectedPassengerType, label: Text("Passenger Category")) {
+                                ForEach(0..<passengerType.count) {
+                                    Text(self.passengerType[$0])
+                                }
+                            }
+                            // Text("Passenger Category")
                              Button(action: {
                                  self.sayAnnouncement.toggle()
                              })
