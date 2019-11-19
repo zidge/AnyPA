@@ -28,7 +28,7 @@ struct ISpeak: View {
                 }
                 
                 Section {
-                    Text("Your \(self.announceType[selectedAnnounceType]) message:")
+                    Text("Build your \(self.announceType[selectedAnnounceType]) message:")
                     if self.announceType[selectedAnnounceType] == "Ad-hoc" {
                         Text("Say What?")
                         Button(action: {
@@ -77,10 +77,12 @@ struct ISpeak: View {
                             }
                     }
                     else if self.announceType[selectedAnnounceType] == "Delay" {
-                        Text("Train line?")
+                        Text("What Train?")
+                        TextField("Train Line", text: $trainLine)
                         Stepper(value: $delay, in: 5...50) {
                          Text("Estimated Delay: \(self.delay) min")
                         }
+                        Text("Msg: Attention, we expect a 15 minutes delay for Line 1 trains.")
                          Button(action: {
                              self.sayAnnouncement.toggle()
                          })
