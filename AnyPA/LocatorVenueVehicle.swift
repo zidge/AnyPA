@@ -13,15 +13,13 @@ import SwiftUI
 
 class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
     
-    @Published var shortestDistance: Int = 1
+    @Published var shortestDistance: Int = 2
     var locationManager: CLLocationManager?
     @Published var distanceFromStation: Int = 4
 
     
-    
     override init() {
     
-        
         super.init()
         locationManager = CLLocationManager()
         locationManager?.delegate = self
@@ -29,18 +27,18 @@ class StationProximityDetector: NSObject, ObservableObject, CLLocationManagerDel
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.startUpdatingLocation()
         print("THis is that")
-        // Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-        //    self.shortestDistance += 1
-        // }
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            self.shortestDistance += 1
+         }
         
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             // Great
-            self.distanceFromStation = 111
+            self.shortestDistance = 111
         } else {
-           self.distanceFromStation = 333
+           self.shortestDistance = 333
          }
     }
     
@@ -63,7 +61,11 @@ struct LocatorVenueVehicle: View {
     var body: some View {
         VStack {
         Text("\(stationProximityDetector.shortestDistance)")
-        Text("\(stationProximityDetector.distanceFromStation)")
+        Text("\(stationProximityDetector.distanceFromStation) km")
+        Text("Based on curent location, travel habits, train status, get info on...")
+        Text(">Nearest train station")
+        Text(">Offers for taxi or other transport alternatives")
+        Text(">Suggestions on best time to leave, route etc.")
         }
         
     }

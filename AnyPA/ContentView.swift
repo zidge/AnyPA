@@ -69,6 +69,9 @@ struct ContentView: View {
                     Text("iSpeak")
                 }
                 
+                NavigationLink(destination: LocatorVenueVehicle()) {
+                    Text("Assistant")
+                }
 
             })
            .alert(isPresented: $locatedInTrain) {

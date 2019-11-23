@@ -28,7 +28,7 @@ struct TrainStation : Identifiable {
 let testData = [
     TrainStation(trainId: 1, name: "Tunneys", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: true),
     TrainStation(trainId: 2, name: "Bayview", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: true),
-    TrainStation(trainId: 3, name: "Pimisi", address: "Nearby", stationlatitude: 40, stationlongitude: -75, hasVideo: false),
+    TrainStation(trainId: 3, name: "Pimisi", address: "Nearby", stationlatitude: 37, stationlongitude: 23, hasVideo: false),
     TrainStation(trainId: 4, name: "Lyon", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: true),
     TrainStation(trainId: 5, name: "Parliament", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: true),
     TrainStation(trainId: 6, name: "Rideau", address: "Nearby...", stationlatitude: 40, stationlongitude: -75, hasVideo: false),
